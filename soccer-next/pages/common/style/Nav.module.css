@@ -1,7 +1,7 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    background-color: yellow;
+    background-color: rgb(187, 221, 235);
 
 
 }
@@ -9,3 +9,4 @@
     display: inline;
     margin-left: 40px;
 }
+

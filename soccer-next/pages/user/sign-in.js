@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-export default function Login(){
+export default function SignIn(){
 const [id, setId] = useState('')
 const [password, setPassword] = useState('')
 const [result, setResult] = useState('')
                           
-const login = ()=>{
+const SignIn = ()=>{
     let id = document.getElementById('id').value 
     console.log('id: ' +id)
     let password = document.getElementById('password').value 
