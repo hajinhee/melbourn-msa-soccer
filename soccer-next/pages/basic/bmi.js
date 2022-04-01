@@ -1,37 +1,36 @@
-import React,{useState} from "react"
+import React, {useState} from "react";
 
-export default function Bmi(){
-    const [name, setName] = useState('')
-    const [height, setHeight] = useState(0.0)
-    const [weight, setWeight] = useState(0.0)
+
+export default function Bmi(){ 
+    const [inputs, setInputs] = useState({})
     const [result, setResult] = useState('')
+    const {name, height, weight} = inputs; //Object Destructuring
 
-    const bmi = ()=> {
-        let name = document.getElementById('name').value
-        console.log('name: ' +name)
-        let height = document.getElementById('height').value
-        console.log('height: ' +height)
-        let weight = document.getElementById('weight').value
-        console.log('weight: ' +weight)
-        setName(name)
-        setHeight(height)
-        setWeight(weight)
-        setResult('이름: ' +name+ '키: ' +height+ ' 몸무게: ' +weight)
-        console.log('result: ' +result)
-        
+    const handleChange = (e)=> {
+        e.preventDefault()
+        const {value, name} = e.target;
+        setInputs({
+            ...inputs, [name]: value
+        })
+    }
+    const handleClick = (e)=> {
+        e.preventDefault()
+        alert(`BMI 결과 : ${JSON.stringify(inputs)}`)
     }
 
-    return <div><h1>BMI</h1>
-    <form action="">
+    return <>
+    <form>
+    <h1>BMI</h1>
+    <div>
     <label htmlFor=""><b>이름</b></label><br/>
-    <input id="name" type=''/><br/>
+    <input type='text' name='name' onChange={handleChange}/><br/>
     <label htmlFor=""><b>키</b></label><br/>
-    <input id="height" type=''/><br/>
+    <input type='text' name='height' onChange={handleChange}/><br/>
     <label htmlFor=""><b>몸무게</b></label><br/>
-    <input id="weight" type=''/><br/>
+    <input type='text' name='weight' onChange={handleChange}/><br/>
 
-    <button onClick={()=>{bmi()}}>확인</button>
-    </form>
-    <div>{result}</div>
+    <button onClick={handleClick}>BMI 체크</button>
     </div>
-}
+    </form>
+    </>
+} 
